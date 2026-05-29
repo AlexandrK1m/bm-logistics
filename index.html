@@ -392,6 +392,13 @@
       </button>
       <div class="form-msg" id="formMsg"></div>
     </form>
+
+    <div class="success-screen" id="successScreen">
+      <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+      <h3 class="success-title">Заявка отправлена!</h3>
+      <p class="success-sub">Мы свяжемся с вами в ближайшее время</p>
+      <p class="success-timer">Окно закроется через 3 секунды…</p>
+    </div>
   </div>
 </div>
 
@@ -568,9 +575,18 @@
       const data = await res.json();
 
       if (data.success) {
-        msg.textContent = '✓ Заявка отправлена! Мы свяжемся с вами в ближайшее время.';
-        msg.className   = 'form-msg success';
+        requestForm.style.display = 'none';
+        document.querySelector('.modal-title').style.display = 'none';
+        document.getElementById('successScreen').style.display = 'flex';
         requestForm.reset();
+        setTimeout(() => {
+          closeModal();
+          setTimeout(() => {
+            requestForm.style.display = '';
+            document.querySelector('.modal-title').style.display = '';
+            document.getElementById('successScreen').style.display = 'none';
+          }, 400);
+        }, 3000);
       } else {
         throw new Error(data.message);
       }

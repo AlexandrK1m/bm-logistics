@@ -1078,6 +1078,39 @@ footer strong { color: var(--text); }
   color: var(--accent2);
 }
 
+.success-screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  gap: 14px;
+}
+.success-icon {
+  font-size: 64px;
+  color: var(--accent);
+  animation: successPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes successPop {
+  0%   { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.success-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text);
+}
+.success-sub {
+  font-size: 15px;
+  color: var(--muted);
+}
+.success-timer {
+  font-size: 12px;
+  color: rgba(136,146,164,0.5);
+  margin-top: 8px;
+}
+
 .form-msg.error {
   display: block;
   background: rgba(248, 113, 113, 0.12);
